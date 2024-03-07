@@ -133,7 +133,7 @@ services:
     networks: 
       - backend
     volumes:
-      - ./config-prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
     environment:
       WAIT_HOSTS: bnkannuaire:10001 # Attente demarrage services (attente 30s MAX)
 
