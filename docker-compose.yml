@@ -2,6 +2,7 @@
 
 # Automatise le lancement de l'infrastructure micro-services
 
+# version de compose
 version: '3.8'
 
 # Define services
