@@ -34,6 +34,13 @@ services:
       - backend
     environment:
       WAIT_HOSTS: bnkannuaire:10001 # Attente demarrage service Annuaire (attente 30s MAX)
+    healthcheck:
+      test: "curl --fail --silent localhost:10003/actuator/health | grep UP || exit 1"
+      interval: 20s
+      timeout: 5s
+      retries: 5
+      start_period: 40s
+
   # Micro-service de gestion des comptes clients
   banque-clientservice:
     # Lancement service de gestion des clients
@@ -44,8 +51,10 @@ services:
     restart: "no" 
     container_name: bnkclientservice
     depends_on: 
-      - banque-configsrv
-      - banque-mysql
+      banque-configsrv:
+        condition: service_healthy
+      banque-mysql:
+        condition: service_healthy
     networks: 
       - backend
       - backclients
@@ -61,13 +70,17 @@ services:
     restart: "no" 
     container_name: bnkcompteservice
     depends_on: 
-      - banque-configsrv
-      - banque-mongo
+      banque-configsrv:
+        condition: service_healthy
+      banque-mongo:
+        condition: service_healthy
+
     networks: 
       - backend
       - backcomptes
     environment:
       WAIT_HOSTS: bnkconfigsrv:10003, bnkmongo:27017 # Attente demarrage services (attente 30s MAX)
+
   # Micro-service composite de gestion des comptes client avec comptes bancaires
   banque-clientcompte:
     # Lancement service de client-comptes 
@@ -147,6 +160,10 @@ services:
     #  - db-data-mysql:/var/lib/mysql
     networks:
       - backclients
+    healthcheck:
+      test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost" ]
+      timeout: 20s
+      retries: 10
  
   # Database Service (Mongo)
   banque-mongo:
@@ -160,7 +177,11 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: root
       MONGO_INITDB_DATABASE: banquebd
     networks:
-      - backcomptes 
+      - backcomptes
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
+      timeout: 20s
+      retries: 10
 
 # Networks to be created to facilitate communication between containers
 networks:
