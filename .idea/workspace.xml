@@ -4,14 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="790700af-1a71-4216-8d2c-b8f89e1a8cbe" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/amc_config_docker/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/amc_config_docker/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/amc_config_docker/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/amc_config_docker/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/amc_config_docker/amcclients-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/amc_config_docker/amcclients-dev.yml" afterDir="false" />
+    <list default="true" id="790700af-1a71-4216-8d2c-b8f89e1a8cbe" name="Changes" comment="Ajout CORS">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/amc_clients" beforeDir="false" afterPath="$PROJECT_DIR$/amc_clients" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/amc_clients/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/amc_clients/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/amc_clients/src/test/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/amc_clients/src/test/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/amc_comptes" beforeDir="false" afterPath="$PROJECT_DIR$/amc_comptes" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/amc_comptes/src/test/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/amc_comptes/src/test/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/amc_config" beforeDir="false" afterPath="$PROJECT_DIR$/amc_config" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/amc_config_docker/apigateway-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/amc_config_docker/apigateway-dev.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/amc_configserver" beforeDir="false" afterPath="$PROJECT_DIR$/amc_configserver" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/amc_configserver/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/amc_configserver/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/amc_proxy/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/amc_proxy/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/amc_proxy/src/main/java/fr/miage/amc_proxy/AmcProxyApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/amc_proxy/src/main/java/fr/miage/amc_proxy/AmcProxyApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/amc_proxy/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/amc_proxy/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/amc_proxy/src/test/java/fr/miage/amc_proxy/AmcProxyApplicationTests.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,7 +25,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/amc_proxy" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/amc_config_docker" />
   </component>
   <component name="KubernetesApiProvider">{
   &quot;contexts&quot;: [
@@ -40,37 +46,93 @@
   &quot;associatedIndex&quot;: 8
 }</component>
   <component name="ProjectId" id="2dMhup2LYC8Jt0uX6oQaevQ7Bsz" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/torguet/dev/Spring/AMSC&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "/Users/torguet/dev/Spring/AMSC",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "ts.external.directory.path": "/Users/torguet/dev/Spring/AMSC/AngularFront/node_modules/typescript/lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="RunManager" selected="Docker.docker-compose.yml.banque-apigateway: Compose Deployment">
+    <configuration name="AmcAnnuaireApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="amc_annuaire" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.amc_annuaire.AmcAnnuaireApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AmcClientsApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="amc_clients" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="fr.miage.amc_clients.AmcClientsApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AmcCompositeApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="amc_composite" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="fr.miage.amc_composite.AmcCompositeApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AmcComptesApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="amc_comptes" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="fr.miage.amc_comptes.AmcComptesApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AmcConfigserverApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="amc_configserver" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="fr.miage.amc_configserver.AmcConfigserverApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AmcProxyApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="amc_proxy" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="fr.miage.amc_proxy.AmcProxyApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
       <deployment type="docker-compose.yml">
         <settings />
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="docker-compose.yml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="sourceFilePath" value="docker-compose.yml" />
+        </settings>
       </deployment>
       <method v="2" />
     </configuration>
@@ -126,26 +188,13 @@
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="docker-compose.yml.banque-configsrv: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
-      <deployment type="docker-compose.yml">
-        <settings>
-          <option name="services">
-            <list>
-              <option value="banque-configsrv" />
-            </list>
-          </option>
-          <option name="sourceFilePath" value="docker-compose.yml" />
-        </settings>
-      </deployment>
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Docker.docker-compose.yml.banque-apigateway: Compose Deployment" />
+        <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
         <item itemvalue="Docker.docker-compose.yml.banque-clientcompte: Compose Deployment" />
         <item itemvalue="Docker.docker-compose.yml.banque-compteservice: Compose Deployment" />
         <item itemvalue="Docker.docker-compose.yml.banque-clientservice: Compose Deployment" />
-        <item itemvalue="Docker.docker-compose.yml.banque-configsrv: Compose Deployment" />
       </list>
     </recent_temporary>
   </component>
@@ -160,9 +209,88 @@
       <workItem from="1709824082975" duration="1855000" />
       <workItem from="1709825946510" duration="1858000" />
     </task>
+    <task id="LOCAL-00001" summary="Ajout sécurité en cours">
+      <option name="closed" value="true" />
+      <created>1710255712954</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1710255712954</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Ajout sécurité en cours.">
+      <option name="closed" value="true" />
+      <created>1710257564830</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1710257564830</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Ajout sécurité en cours.">
+      <option name="closed" value="true" />
+      <created>1710258075248</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1710258075248</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Ajout sécurité en cours.">
+      <option name="closed" value="true" />
+      <created>1710259696634</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1710259696634</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Ajout CORS">
+      <option name="closed" value="true" />
+      <created>1710260154305</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1710260154305</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Ajout CORS">
+      <option name="closed" value="true" />
+      <created>1710261057938</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1710261057938</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="roots">
+                    <value>
+                      <list>
+                        <option value="$PROJECT_DIR$/amc_configserver" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Passage à docker" />
+    <MESSAGE value="Ajout sécurité en cours" />
+    <MESSAGE value="Ajout sécurité en cours." />
+    <MESSAGE value="Ajout CORS" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ajout CORS" />
   </component>
 </project>
