@@ -4,20 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="790700af-1a71-4216-8d2c-b8f89e1a8cbe" name="Changes" comment="Ajout CORS">
+    <list default="true" id="790700af-1a71-4216-8d2c-b8f89e1a8cbe" name="Changes" comment="Ajout Sécurité.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/amc_clients" beforeDir="false" afterPath="$PROJECT_DIR$/amc_clients" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/amc_clients/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/amc_clients/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/amc_clients/src/test/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/amc_clients/src/test/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/amc_comptes" beforeDir="false" afterPath="$PROJECT_DIR$/amc_comptes" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/amc_comptes/src/test/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/amc_comptes/src/test/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/amc_config" beforeDir="false" afterPath="$PROJECT_DIR$/amc_config" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/amc_config_docker/apigateway-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/amc_config_docker/apigateway-dev.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/amc_configserver" beforeDir="false" afterPath="$PROJECT_DIR$/amc_configserver" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/amc_proxy/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/amc_proxy/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/amc_proxy/src/main/java/fr/miage/amc_proxy/AmcProxyApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/amc_proxy/src/main/java/fr/miage/amc_proxy/AmcProxyApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/amc_proxy/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/amc_proxy/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/amc_proxy/src/test/java/fr/miage/amc_proxy/AmcProxyApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/amc_proxy" beforeDir="false" afterPath="$PROJECT_DIR$/amc_proxy" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,7 +15,13 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/amc_config_docker" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/amc_clients" value="auth_okta" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/amc_clients" />
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
   <component name="KubernetesApiProvider">{
   &quot;contexts&quot;: [
@@ -79,7 +75,7 @@
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager" selected="Docker.docker-compose.yml.banque-apigateway: Compose Deployment">
+  <component name="RunManager" selected="Docker.docker-compose.yml: Compose Deployment">
     <configuration name="AmcAnnuaireApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="amc_annuaire" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.amc_annuaire.AmcAnnuaireApplication" />
@@ -190,11 +186,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
         <item itemvalue="Docker.docker-compose.yml.banque-apigateway: Compose Deployment" />
         <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
         <item itemvalue="Docker.docker-compose.yml.banque-clientcompte: Compose Deployment" />
         <item itemvalue="Docker.docker-compose.yml.banque-compteservice: Compose Deployment" />
-        <item itemvalue="Docker.docker-compose.yml.banque-clientservice: Compose Deployment" />
       </list>
     </recent_temporary>
   </component>
@@ -257,7 +253,23 @@
       <option name="project" value="LOCAL" />
       <updated>1710261057938</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Ajout CORS">
+      <option name="closed" value="true" />
+      <created>1710262132797</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1710262132797</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Ajout Sécurité.">
+      <option name="closed" value="true" />
+      <created>1710262424602</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1710262424602</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -291,6 +303,7 @@
     <MESSAGE value="Ajout sécurité en cours" />
     <MESSAGE value="Ajout sécurité en cours." />
     <MESSAGE value="Ajout CORS" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ajout CORS" />
+    <MESSAGE value="Ajout Sécurité." />
+    <option name="LAST_COMMIT_MESSAGE" value="Ajout Sécurité." />
   </component>
 </project>
