@@ -4,13 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="790700af-1a71-4216-8d2c-b8f89e1a8cbe" name="Changes" comment="CORS fonctionne.">
+    <list default="true" id="790700af-1a71-4216-8d2c-b8f89e1a8cbe" name="Changes" comment="Ajout appli Angular à docker-compose.yml">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/amc_clients" beforeDir="false" afterPath="$PROJECT_DIR$/amc_clients" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/amc_clients/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/amc_clients/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/amc_comptes" beforeDir="false" afterPath="$PROJECT_DIR$/amc_comptes" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/amc_front/src/app/pages/external-api/external-api.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/amc_front/src/app/pages/external-api/external-api.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/amc_proxy" beforeDir="false" afterPath="$PROJECT_DIR$/amc_proxy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/amc_front/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/amc_front/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,6 +50,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Docker.docker-compose.yml.banque-front: Compose Deployment.executor": "Run",
     "Docker.docker-compose.yml: Compose Deployment.executor": "Run",
     "Maven.ExempleMicroServicesV2024 [install].executor": "Run",
     "RequestMappingsPanelOrder0": "0",
@@ -63,11 +62,13 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/Users/torguet/dev/Spring/AMSC",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
@@ -90,7 +91,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Docker.docker-compose.yml: Compose Deployment">
+  <component name="RunManager" selected="Docker.docker-compose.yml.banque-front: Compose Deployment">
     <configuration name="AmcAnnuaireApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="amc_annuaire" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.amc_annuaire.AmcAnnuaireApplication" />
@@ -173,19 +174,6 @@
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="docker-compose.yml.banque-clientservice: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
-      <deployment type="docker-compose.yml">
-        <settings>
-          <option name="services">
-            <list>
-              <option value="banque-clientservice" />
-            </list>
-          </option>
-          <option name="sourceFilePath" value="docker-compose.yml" />
-        </settings>
-      </deployment>
-      <method v="2" />
-    </configuration>
     <configuration name="docker-compose.yml.banque-compteservice: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
@@ -199,13 +187,26 @@
       </deployment>
       <method v="2" />
     </configuration>
+    <configuration name="docker-compose.yml.banque-front: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="services">
+            <list>
+              <option value="banque-front" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="docker-compose.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Docker.docker-compose.yml.banque-front: Compose Deployment" />
         <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
         <item itemvalue="Docker.docker-compose.yml.banque-apigateway: Compose Deployment" />
         <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
         <item itemvalue="Docker.docker-compose.yml.banque-clientcompte: Compose Deployment" />
-        <item itemvalue="Docker.docker-compose.yml.banque-compteservice: Compose Deployment" />
       </list>
     </recent_temporary>
   </component>
@@ -219,6 +220,7 @@
       <updated>1709824081210</updated>
       <workItem from="1709824082975" duration="1855000" />
       <workItem from="1709825946510" duration="1858000" />
+      <workItem from="1710328258932" duration="1015000" />
     </task>
     <task id="LOCAL-00001" summary="Ajout sécurité en cours">
       <option name="closed" value="true" />
@@ -300,7 +302,23 @@
       <option name="project" value="LOCAL" />
       <updated>1710325509883</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Changement README et messages dans l'application angular.">
+      <option name="closed" value="true" />
+      <created>1710326197202</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1710326197202</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Ajout appli Angular à docker-compose.yml">
+      <option name="closed" value="true" />
+      <created>1710327605237</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1710327605237</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -337,6 +355,8 @@
     <MESSAGE value="Ajout Sécurité." />
     <MESSAGE value="Ajout front et effacement tests intégration pour comptes." />
     <MESSAGE value="CORS fonctionne." />
-    <option name="LAST_COMMIT_MESSAGE" value="CORS fonctionne." />
+    <MESSAGE value="Changement README et messages dans l'application angular." />
+    <MESSAGE value="Ajout appli Angular à docker-compose.yml" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ajout appli Angular à docker-compose.yml" />
   </component>
 </project>

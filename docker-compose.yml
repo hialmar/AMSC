@@ -121,7 +121,7 @@ services:
     environment:
       WAIT_HOSTS: bnkconfigsrv:10003, bnkmongo:27017, bnkcompteservice:10021, bnkclientservice:10011, bnkclientservice:10031  # Attente demarrage services (attente 30s MAX)
 
-  # Front Angular version dev
+  # Front Angular
   banque-front:
     # Lancement service de gateway
     build:
