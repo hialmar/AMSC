@@ -23,6 +23,19 @@ Une fois le git clone du dépôt principal réalisé il faut cloner les dépôts
 * https://github.com/hialmar/amc_proxy
 * https://github.com/hialmar/amc_configserver
 
+Donc il faut faire :
+
+```
+git clone https://github.com/hialmar/AMSC.git
+cd AMSC
+git clone https://github.com/hialmar/amc_clients.git
+git clone https://github.com/hialmar/amc_comptes.git
+git clone https://github.com/hialmar/amc_composite.git
+git clone https://github.com/hialmar/amc_annuaire.git
+git clone https://github.com/hialmar/amc_proxy.git
+git clone https://github.com/hialmar/amc_configserver.git
+```
+
 Vous pouvez aussi cloner les dépôts de fichiers de configuration si vous voulez héberger les votres :
 * https://github.com/hialmar/amc_config
 * https://github.com/hialmar/amc_config_docker
