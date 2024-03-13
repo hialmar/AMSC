@@ -15,6 +15,20 @@ En plus on a les MS edges suivants :
 * un service de traçage avec Spring Boot et Zipkin ;
 * un service de monitoring avec Spring Boot et Prometheus.
 
+Une fois le git clone du dépôt principal réalisé il faut se déplacer dans les différents sous-dossiers et
+cloner les dépôts suivants :
+* https://github.com/hialmar/amc_clients
+* https://github.com/hialmar/amc_comptes
+* https://github.com/hialmar/amc_composite
+* https://github.com/hialmar/amc_annuaire
+* https://github.com/hialmar/amc_proxy
+* https://github.com/hialmar/amc_configserver
+
+Vous pouvez aussi cloner les dépôts de fichiers de configuration si vous voulez héberger les votres :
+* https://github.com/hialmar/amc_config
+* https://github.com/hialmar/amc_config_docker
+
+
 ### BD et produits à lancer
 
 Pour commencer le TP il faut les dépendances suivantes (qui seront intégrées au docker-compose.yml)
