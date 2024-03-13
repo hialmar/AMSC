@@ -102,7 +102,7 @@ services:
 
   # Micro-service API Gateway
   banque-apigateway:
-    # Lancement service de client-comptes 
+    # Lancement service de gateway
     build:
       context: amc_proxy # Répertoire (dans répertoire courant) contenant le dockerfile
       dockerfile: Dockerfile
@@ -120,6 +120,24 @@ services:
       - backend
     environment:
       WAIT_HOSTS: bnkconfigsrv:10003, bnkmongo:27017, bnkcompteservice:10021, bnkclientservice:10011, bnkclientservice:10031  # Attente demarrage services (attente 30s MAX)
+
+  # Front Angular version dev
+  banque-front:
+    # Lancement service de gateway
+    build:
+      context: amc_front # Répertoire (dans répertoire courant) contenant le dockerfile
+      dockerfile: Dockerfile
+    image: banque-front:8.0 # Pour placer le TAG de version sur le nom de l'image
+    ports:
+      - "4200:4200" # Exposition port 4200 (à virer pour passer par Gateway)
+    restart: "no"
+    container_name: bnkfront
+    depends_on:
+      - banque-apigateway
+    networks:
+      - backend
+    environment:
+      WAIT_HOSTS: bnkapigateway:10000  # Attente demarrage services (attente 30s MAX)
 
   # Serveur Prometheus
   banque-prometheus:
