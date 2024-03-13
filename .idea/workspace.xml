@@ -4,88 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="790700af-1a71-4216-8d2c-b8f89e1a8cbe" name="Changes" comment="Ajout front et effacement tests intégration pour comptes.">
-      <change afterPath="$PROJECT_DIR$/amc_front/.browserslistrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/amc_front/.dockerignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/amc_front/.editorconfig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/amc_front/.eslintrc.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/amc_front/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/amc_front/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/amc_front/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/amc_front/angular.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/amc_front/api-server.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/amc_front/e2e/protractor.conf.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/amc_front/e2e/src/app.e2e-spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/amc_front/e2e/src/app.po.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/amc_front/e2e/tsconfig.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/amc_front/exec.ps1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/amc_front/exec.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/amc_front/karma.conf.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/amc_front/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/amc_front/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/amc_front/server.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/amc_front/src/app/api.service.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/amc_front/src/app/api.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/amc_front/src/app/app-routing.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/amc_front/src/app/app.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/amc_front/src/app/app.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/amc_front/src/app/app.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/amc_front/src/app/app.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/amc_front/src/app/app.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/amc_front/src/app/components/footer/footer.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/amc_front/src/app/components/footer/footer.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/amc_front/src/app/components/footer/footer.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/amc_front/src/app/components/footer/footer.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/amc_front/src/app/components/hero/hero.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/amc_front/src/app/components/hero/hero.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/amc_front/src/app/components/hero/hero.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/amc_front/src/app/components/hero/hero.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/amc_front/src/app/components/home-content/home-content.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/amc_front/src/app/components/home-content/home-content.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/amc_front/src/app/components/home-content/home-content.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/amc_front/src/app/components/home-content/home-content.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/amc_front/src/app/components/loading/loading.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/amc_front/src/app/components/loading/loading.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/amc_front/src/app/components/loading/loading.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/amc_front/src/app/components/loading/loading.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/amc_front/src/app/components/nav-bar/nav-bar.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/amc_front/src/app/components/nav-bar/nav-bar.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/amc_front/src/app/components/nav-bar/nav-bar.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/amc_front/src/app/components/nav-bar/nav-bar.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/amc_front/src/app/pages/error/error.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/amc_front/src/app/pages/error/error.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/amc_front/src/app/pages/external-api/external-api.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/amc_front/src/app/pages/external-api/external-api.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/amc_front/src/app/pages/external-api/external-api.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/amc_front/src/app/pages/external-api/external-api.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/amc_front/src/app/pages/home/home.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/amc_front/src/app/pages/home/home.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/amc_front/src/app/pages/home/home.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/amc_front/src/app/pages/home/home.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/amc_front/src/app/pages/profile/profile.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/amc_front/src/app/pages/profile/profile.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/amc_front/src/app/pages/profile/profile.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/amc_front/src/app/pages/profile/profile.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/amc_front/src/assets/.gitkeep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/amc_front/src/assets/loading.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/amc_front/src/assets/logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/amc_front/src/environments/environment.prod.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/amc_front/src/environments/environment.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/amc_front/src/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/amc_front/src/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/amc_front/src/main.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/amc_front/src/polyfills.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/amc_front/src/styles.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/amc_front/src/test.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/amc_front/tsconfig.app.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/amc_front/tsconfig.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/amc_front/tsconfig.spec.json" afterDir="false" />
+    <list default="true" id="790700af-1a71-4216-8d2c-b8f89e1a8cbe" name="Changes" comment="CORS fonctionne.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/amc_clients" beforeDir="false" afterPath="$PROJECT_DIR$/amc_clients" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/amc_comptes/src/test/java/fr/miage/amc_comptes/AmcComptesApplicationTests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/amc_config" beforeDir="false" afterPath="$PROJECT_DIR$/amc_config" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/amc_config_docker/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/amc_config_docker/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/amc_proxy/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/amc_proxy/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/amc_clients/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/amc_clients/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/amc_comptes" beforeDir="false" afterPath="$PROJECT_DIR$/amc_comptes" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/amc_front/src/app/pages/external-api/external-api.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/amc_front/src/app/pages/external-api/external-api.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/amc_proxy" beforeDir="false" afterPath="$PROJECT_DIR$/amc_proxy" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,7 +23,7 @@
         <entry key="$PROJECT_DIR$/amc_clients" value="auth_okta" />
       </map>
     </option>
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/amc_proxy" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/amc_clients" />
     <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
   <component name="KubernetesApiProvider">{
@@ -359,7 +284,23 @@
       <option name="project" value="LOCAL" />
       <updated>1710262424602</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Ajout front et effacement tests intégration pour comptes.">
+      <option name="closed" value="true" />
+      <created>1710325488214</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1710325488214</updated>
+    </task>
+    <task id="LOCAL-00010" summary="CORS fonctionne.">
+      <option name="closed" value="true" />
+      <created>1710325509883</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1710325509883</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -395,6 +336,7 @@
     <MESSAGE value="Ajout CORS" />
     <MESSAGE value="Ajout Sécurité." />
     <MESSAGE value="Ajout front et effacement tests intégration pour comptes." />
-    <option name="LAST_COMMIT_MESSAGE" value="Ajout front et effacement tests intégration pour comptes." />
+    <MESSAGE value="CORS fonctionne." />
+    <option name="LAST_COMMIT_MESSAGE" value="CORS fonctionne." />
   </component>
 </project>

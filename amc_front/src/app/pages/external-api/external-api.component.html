@@ -1,15 +1,15 @@
 <div class="container mt-5">
   <h1>External API</h1>
-  
+
   <div *ngIf="hasApiError" class="alert alert-danger" role="alert">
-    An error occured when trying to call the local API on port 3001. Ensure the local API is started using either `npm run dev` or `npm run
+    An error occured when trying to call the local API on port 10000. Ensure the local API is started using either `npm run dev` or `npm run
     server:api`.
   </div>
 
   <p class="lead">Ping an external API by clicking the button below.</p>
 
   <p>
-    This will call a local API on port 3001 that would have been started if you
+    This will call a local API on port 10000 that would have been started if you
     run <code>npm run dev</code> (or <code>npm run server:api</code>). An access token is sent as part of the
     request's `Authorization` header and the API will validate it using the
     API's audience value.
