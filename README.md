@@ -15,8 +15,7 @@ En plus on a les MS edges suivants :
 * un service de traçage avec Spring Boot et Zipkin ;
 * un service de monitoring avec Spring Boot et Prometheus.
 
-Une fois le git clone du dépôt principal réalisé il faut se déplacer dans les différents sous-dossiers et
-cloner les dépôts suivants :
+Une fois le git clone du dépôt principal réalisé il faut cloner les dépôts suivants :
 * https://github.com/hialmar/amc_clients
 * https://github.com/hialmar/amc_comptes
 * https://github.com/hialmar/amc_composite
