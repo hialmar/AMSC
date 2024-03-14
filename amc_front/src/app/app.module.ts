@@ -19,6 +19,11 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthHttpInterceptor, AuthModule } from '@auth0/auth0-angular';
 import { environment as env } from '../environments/environment';
 
+
+import {APP_BASE_HREF} from '@angular/common';
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -65,6 +70,7 @@ import { environment as env } from '../environments/environment';
         },
       },
     },
+    {provide: APP_BASE_HREF, useValue: '/ui/'}
   ],
   bootstrap: [AppComponent],
 })

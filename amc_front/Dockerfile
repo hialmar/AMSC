@@ -28,7 +28,7 @@ COPY package-lock.json .
 
 RUN npm install --production --legacy-peer-deps
 
-COPY --from=build ./app/dist/login-demo ./dist
+COPY --from=build ./app/dist/login-demo ./dist/ui
 COPY ./server.js .
 COPY ./api-server.js .
 COPY ./auth_config.json .
