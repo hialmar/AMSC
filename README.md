@@ -153,13 +153,13 @@ npm install && npm start
 
 ```
 
-#### Modifications Gateway :
+#### Modifications Des serveurs de ressources (client, comptes et composite) :
 
-Ajouts de dépendances pour transformer la Gateway en serveur de ressources au sens Oauth et ajouter les classes de config pour Okta.
+Ajouts de dépendances pour transformer le serveur client (par exemple) en serveur de ressources au sens Oauth et ajouter les classes de config pour Okta.
 
-Attention : une fois ces modifications réalisées nous ne pourrons plus utiliser la Gateway sans authentification !
+Attention : une fois ces modifications réalisées nous ne pourrons plus utiliser l'application sans authentification !
 
-##### Ajoute des dépendances au pom.xml de la Gateway :
+##### Ajoute des dépendances au pom.xml :
 
 ```
         <dependency>
@@ -188,16 +188,11 @@ Attention : une fois ces modifications réalisées nous ne pourrons plus utilise
 ```
 @SpringBootApplication
 @EnableDiscoveryClient
-@EnableWebFluxSecurity // ICI
-public class AmcProxyApplication {
-    @Bean
-    public GlobalFilter customFilter() {
-        return new PreFilter();
-    }
+@EnableWebSecurity // ICI
+public class AmcClientsApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(AmcProxyApplication.class, args);
-    }
+...
+
     
     // ET LA
     @Bean
