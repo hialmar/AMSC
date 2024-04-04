@@ -15,7 +15,7 @@ En plus on a les MS edges suivants :
 * un service de traçage avec Spring Boot et Zipkin ;
 * un service de monitoring avec Spring Boot et Prometheus.
 
-Une fois le git clone du dépôt principal réalisé il faut cloner les dépôts suivants :
+Une fois le git clone du dépôt principal réalisé, il faut cloner les dépôts suivants :
 * https://github.com/hialmar/amc_clients
 * https://github.com/hialmar/amc_comptes
 * https://github.com/hialmar/amc_composite
@@ -23,7 +23,10 @@ Une fois le git clone du dépôt principal réalisé il faut cloner les dépôts
 * https://github.com/hialmar/amc_proxy
 * https://github.com/hialmar/amc_configserver
 
-Donc il faut faire :
+
+Note : il y a des versions des services clients, comptes et composite avec et sans sécurité (voir plus bas)
+
+Donc, il faut faire :
 
 ```
 git clone https://github.com/hialmar/AMSC.git
@@ -36,14 +39,14 @@ git clone https://github.com/hialmar/amc_proxy.git
 git clone https://github.com/hialmar/amc_configserver.git
 ```
 
-Vous pouvez aussi cloner les dépôts de fichiers de configuration si vous voulez héberger les votres :
+Vous pouvez aussi cloner les dépôts de fichiers de configuration si vous voulez héberger les vôtres :
 * https://github.com/hialmar/amc_config
 * https://github.com/hialmar/amc_config_docker
 
 
 ### BD et produits à lancer
 
-Pour commencer le TP il faut les dépendances suivantes (qui seront intégrées au docker-compose.yml)
+Pour commencer le TP, il faut les dépendances suivantes (qui seront intégrées au docker-compose.yml)
 
 Commande pour la BD MySQL :
 
@@ -64,6 +67,10 @@ docker run --name my-prometheus --mount type=bind,source=prometheus.yml,destinat
 ### Autre solution : docker-compose.yml
 
 Tous les services sont prêts pour lancement avec "docker-compose up".
+
+
+
+
 
 ### Sécurisation avec Okta
 
@@ -155,6 +162,10 @@ npm install && npm start
 
 #### Modifications Des serveurs de ressources (client, comptes et composite) :
 
+
+Note : il y a des branches avec et sans sécurité pour ces trois dépôts git.
+
+
 Ajouts de dépendances pour transformer le serveur client (par exemple) en serveur de ressources au sens Oauth et ajouter les classes de config pour Okta.
 
 Attention : une fois ces modifications réalisées nous ne pourrons plus utiliser l'application sans authentification !
@@ -182,49 +193,147 @@ Attention : une fois ces modifications réalisées nous ne pourrons plus utilise
 
 ##### Ajout de la sécurité sur l'application :
 
-* Ajout de @EnableWebFluxSecurity pour activer la sécurité
+* Ajout de @EnableMethodSecurity pour activer la sécurité
 * Ajout d'un Bean de type SecurityWebFilterChain pour configurer la sécurité
 
 ```
 @SpringBootApplication
 @EnableDiscoveryClient
-@EnableWebSecurity // ICI
+@EnableMethodSecurity(prePostEnabled = true) // ICI
 public class AmcClientsApplication {
 
 ...
-
-    
-    // ET LA
     @Bean
-    SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) {
+    SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-                .authorizeExchange(exchanges -> exchanges
-                        .pathMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-                        .anyExchange().authenticated()
+                .csrf(AbstractHttpConfigurer::disable)
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+                        .anyRequest().authenticated()
                 )
                 .oauth2ResourceServer((oauth2) -> oauth2.jwt(Customizer.withDefaults()));
+
+        // process CORS annotations
+        http.cors(Customizer.withDefaults());
+
+        // force a non-empty response body for 401's to make the response more browser friendly
+        Okta.configureResourceServer401ResponseBody(http);
+
         return http.build();
     }
-}
 ```
 
 ##### Modification dans application.yml :
 
-* Ajout de CORS (voir aussi plus bas si vous passez par le serveur de configuration) ;
 * Ajout des URLs qui fournissent les jetons JWT (Note : dev-nj3gclnzfe2tmzvt est le nom de mon application à changer) :
   security:
-    oauth2: 
-      resourceserver: 
+    oauth2:
+      resourceserver:
         jwt:
           issuer-uri: https://dev-nj3gclnzfe2tmzvt.us.auth0.com/
           jwk-set-uri: https://dev-nj3gclnzfe2tmzvt.us.auth0.com/.well-known/jwks.json
 * Ajout des URLs pour Okta (fournisseur authentification et URL de l'appli elle-même pour comparaison dans les jetons)
   (Note : dev-nj3gclnzfe2tmzvt est le nom de mon application à changer) :
-  okta: 
+ okta:
     oauth2:
       issuer: https://dev-nj3gclnzfe2tmzvt.us.auth0.com/
       audience: http://localhost:10000
 
+
+```
+# Proprietes de l'application
+spring:
+  application:
+    name: amcclients                                   # nom de l'application
+  cloud:
+    # Activation remontée management dans Eureka
+    config:
+      service-registry:
+        auto-registration:
+          register-management: on
+  # configuration lien vers serveur Zipkin
+
+  datasource:
+    url: jdbc:mysql://banque-mysql:3306/banquebd?serverTimezone=UTC  # URL mysql
+    username: root
+    password: root
+  jpa:                                                      # Configuration JPA
+    database-platform: org.hibernate.dialect.MySQLDialect  # On va parler en MySQL
+    hibernate:
+      # NE PAS LAISSER EN PROD
+      ddl-auto: update                                      # strategie create-drop.
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://dev-nj3gclnzfe2tmzvt.us.auth0.com/
+          jwk-set-uri: https://dev-nj3gclnzfe2tmzvt.us.auth0.com/.well-known/jwks.json
+
+okta:
+  oauth2:
+   issuer: https://dev-nj3gclnzfe2tmzvt.us.auth0.com/
+   audience: http://localhost:10000
+```
+
+#### Modifications pour OpenFeign :
+
+En plus de ce qui est indiqué au-dessus, pour le composite il nous faut transmettre le jeton d'authentification quand
+on appelle les autres services.
+
+D'abord, il faut le récupérer dans le contrôleur REST :
+
+```
+    @GetMapping("{id}")
+    public ClientWithCompte getClient(@PathVariable("id") Long id, @RequestHeader("Authorization") String bearerToken) {
+        logger.info("ClientComptes : demande récup comptes d'un client avec id:{}", id);
+        ClientWithCompte c = clientsCompteRepository.getClientWithComptes(id, bearerToken);
+        logger.info("ClientComptes : demande récup comptes client:{}", c);
+        return c;
+    }
+```
+
+Puis, on le transmet lors des appels OpenFeign :
+```
+    public ClientWithCompte getClientWithComptes(Long idclient, String bearerToken) {
+        logger.info("On a 1 demande");
+        logger.info("On envoie la demande au service client");
+        logger.info("Token "+bearerToken);
+
+        try {
+            // On récupère 1 objet client
+            Client c = this.clientclients.getClient(idclient, bearerToken);
+            logger.info("On a recue la réponse client : {}", c);
+
+            // On récupère la liste des comptes pour 1 client donné
+            logger.info("On envoie la demande au service compte");
+            List<Compte> cpts = this.clientcomptes.getComptes(c.getId(), bearerToken);
+            logger.info("On a recue la réponse compte : {}", c);
+    ... 
+```
+
+Et voilà comment on fait dans un client OpenFeign :
+
+```
+@FeignClient("amcclients")
+@Headers("Authorization: {token}")
+public interface ClientClients {
+
+    // Déclaration d'usage d'une méthode
+    /*
+        UPDATE API GATEWAY
+        Ancien : @RequestMapping(method = RequestMethod.GET, value = "/api/clients/{id}", produces = "application/json")
+        Modif URL pour enlever le /api/clients
+     */
+    @RequestMapping(method = RequestMethod.GET, value = "{id}", produces = "application/json")
+    Client getClient(@PathVariable Long id, @RequestHeader("Authorization") String token);
+}
+```
+
+#### Modifications de la gateway :
+
+##### Modification dans application.yml :
+
+* Ajout de CORS (voir aussi plus bas si vous passez par le serveur de configuration) ;
 
 ```
 # Proprietes de l'application
@@ -247,107 +356,6 @@ spring:
               - PATCH
               - OPTIONS
         add-to-simple-url-handler-mapping: true
-      discovery:
-        locator:
-          enabled: true #activation eureka locator
-          lowerCaseServiceId: true
-          # car le nom des services est en minuscule dans l'URL
-      # Configuration des routes de l'API Gateway
-      routes:
-        #Service CLIENTS-SERVICE
-        - id: client-service
-          uri: lb://amcclients/ #Attention : lb et pas HTTP. Lb est prêt pour faire du load-balancing
-          predicates:
-            # On matche tout ce qui commence par /api/clients
-            - Path=/api/clients/**
-          filters:
-            # On va réécrire l'URL pour enlever le /api/client
-            - RewritePath=/api/clients(?<segment>/?.*), /$\{segment}
-          metadata:
-            cors:
-              allowedOrigins: '*'
-              allowedMethods:
-                - GET
-                - POST
-              allowedHeaders: '*'
-              maxAge: 30
-        #Service COMPTES-SERVICE
-        - id: comptes-service
-          uri: lb://amccomptes/
-          predicates:
-            - Path=/api/comptes/**
-          filters:
-            - RewritePath=/api/comptes(?<segment>/?.*), /$\{segment}
-        #Service CLIENTS-COMPTES
-        - id: clients-comptes
-          uri: lb://amccomposite/
-          predicates:
-            - Path=/api/clientscomptes/**
-          filters:
-            - RewritePath=/api/clientscomptes(?<segment>/?.*), /$\{segment}
-      enabled: on # Activation gateway
-    # Activation remontée management dans Eureka
-    config:
-      service-registry:
-        auto-registration:
-          register-management: on
-  # ICI : URLs pour JWT
-  security:
-    oauth2:
-      resourceserver:
-        jwt:
-          issuer-uri: https://dev-nj3gclnzfe2tmzvt.us.auth0.com/
-          jwk-set-uri: https://dev-nj3gclnzfe2tmzvt.us.auth0.com/.well-known/jwks.json
-
-# Activation des endpoints pour le monitoring
-management:
-  endpoints:
-    web:
-      exposure:
-        include:
-          env,health,
-          info,metrics,
-          loggers,mappings, prometheus
-  tracing:
-    sampling:
-      probability: 1.0
-  zipkin:
-    tracing:
-      endpoint: http://banque-zipkin:9411/api/v2/spans
-# Configuration client de l'annuaire
-# L'API Gateway va s'enregistrer comme un micro-service sur l'annuaire
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://banque-annuaire:10001/eureka/ # url d'accès à l'annuaire
-  instance:
-    metadata-map:
-      prometheus.scrape: "true"
-      prometheus.path: "/actuator/prometheus"
-      prometheus.port: "${management.server.port}"
-      #    instance:
-      #      metadataMap:
-      # on va surcharger le nom de l'application si plusieurs instances de l'API Gateway ont même IP et même port
-      # on surcharge par une valeur random si le nom de l'instance existe déjà.
-#        instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
-
-
-# Configuration du log.
-logging:
-  level:
-    org.springframework.web: INFO # Choix du niveau de log affiché
-#    org.springframework.cloud.gateway: DEBUG # pour avoir plus d'infos sur le gateway
-#    reactor.netty.http.client: DEBUG # pour avoir plus d'infos sur les appels HTTP
-
-# Proprietes du serveur d'entreprise
-server:
-  port: 10000   # HTTP (Tomcat) port
-
-# ICI : Configuration pour Okta
-okta:
-  oauth2:
-    issuer: https://dev-nj3gclnzfe2tmzvt.us.auth0.com/
-    audience: http://localhost:10000
 ```
 
 ##### Fonctionnement :
@@ -357,7 +365,10 @@ okta:
 * Copier le jeton d'authentification dans le plugin du navigateur et l'utiliser pour vos requêtes
 
 
-##### Problème de CORS en passant par le serveur de configurations
+##### Problème de CORS en passant par le serveur de configurations ?
+
+Note : je ne suis pas certain de cette partie, si ça marche sans, prévenez-moi.
+Il est possible que mon problème venait de caches.
 
 Pour que le CORS fonctionne, il faut, apparemment, mettre les propriétés dans
 le fichier application.yml initial (avant la récupération via le config server).
@@ -475,13 +486,57 @@ du front. Dans la partie directives de contentSecurityPolicy :
 
 
 
-A suivre : 
-* faire en sorte que l'application Angular hébergée par docker se trouve derrière 
-la Gateway (il n'y aura donc plus de problème de CORS)
+##### Ajout du front dans la gateway
 
+Pour faire en sorte que l'application Angular hébergée par docker se trouve derrière 
+la Gateway (il n'y aura donc plus de problème de CORS).
 
+Il nous faut indiquer la redirection vers l'application :
 
+```
+        #Service Frontend Angular
+        - id: amc_frontend
+          uri: http://bnkfront:4200/
+          predicates:
+            # On matche tout ce qui commence par /ui
+            - Path=/ui/**
+          filters:
+            - RewritePath=/ui/(?<segment>/?.*), /$\{segment}
+          metadata:
+            cors:
+              allowedOrigins: '*'
+              allowedMethods:
+                - GET
+              allowedHeaders: '*'
+              maxAge: 30
+```
 
+Il nous faut, aussi, rediriger toutes les autres requêtes vers le front (pour gérer les fichiers css et autres
+qui ne sont pas gérés par Angular)
+
+```
+        - id: catchall
+          uri: http://bnkfront:4200/
+          predicates:
+            # On matche tout et on renvoie vers l'ui
+            - Path=/**
+          filters:
+            - RewritePath=/ui/(?<segment>/?.*), /$\{segment}
+          metadata:
+            cors:
+              allowedOrigins: '*'
+              allowedMethods:
+                - GET
+              allowedHeaders: '*'
+              maxAge: 30
+```
+
+Enfin, dans l'application Angular, il faut modifier le HREF pour indiquer à Angular que son URL commence par /ui.
+Ca se fait dans le fichier app.module.ts qui se trouve dans src/app :
+
+```
+    {provide: APP_BASE_HREF, useValue: '/ui/'}
+```
 
 ### Reference Documentation
 
