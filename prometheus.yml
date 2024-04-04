@@ -25,7 +25,7 @@ scrape_configs:
     scrape_interval: 5s
 
     static_configs:
-      - targets: ['host.docker.internal:9090']
+      - targets: ['localhost:9090']
     # metrics_path defaults to '/metrics'
     # scheme defaults to 'http'.
 
@@ -35,7 +35,7 @@ scrape_configs:
     scrape_interval: 5s
 
     static_configs:
-      - targets: ['host.docker.internal:10001']
+      - targets: ['172.17.0.1:10001']
     metrics_path: actuator/prometheus
 
 
