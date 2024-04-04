@@ -35,7 +35,7 @@ scrape_configs:
     scrape_interval: 5s
 
     static_configs:
-      - targets: ['172.17.0.1:10001']
+      - targets: ['bnkannuaire:10001']
     metrics_path: actuator/prometheus
 
 
@@ -43,7 +43,7 @@ scrape_configs:
   - job_name: 'eureka'
     eureka_sd_configs:
     #Specify Eureka's service discovery address
-      - server: 'http://172.17.0.1:10001/eureka'
+      - server: 'http://bnkannuaire:10001/eureka'
     relabel_configs:
    #Path to rewrite metrics
       - source_labels: ["__meta_eureka_app_instance_metadata_prometheus_path"]
