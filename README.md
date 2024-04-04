@@ -24,7 +24,8 @@ Une fois le git clone du dépôt principal réalisé, il faut cloner les dépôt
 * https://github.com/hialmar/amc_configserver
 
 
-Note : il y a des versions des services clients, comptes et composite avec et sans sécurité (voir plus bas)
+Note : il y a des versions des services clients, comptes, composite et proxy (gateway) avec et sans sécurité (voir plus bas)
+
 
 Donc, il faut faire :
 
@@ -191,7 +192,7 @@ Attention : une fois ces modifications réalisées nous ne pourrons plus utilise
         </dependency>
 ```
 
-##### Ajout de la sécurité sur l'application :
+##### Ajout de la sécurité sur les services :
 
 * Ajout de @EnableMethodSecurity pour activer la sécurité
 * Ajout d'un Bean de type SecurityWebFilterChain pour configurer la sécurité
@@ -203,7 +204,7 @@ Attention : une fois ces modifications réalisées nous ne pourrons plus utilise
 public class AmcClientsApplication {
 
 ...
-    @Bean
+    @Bean // ET LA
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(AbstractHttpConfigurer::disable)
@@ -330,6 +331,8 @@ public interface ClientClients {
 ```
 
 #### Modifications de la gateway :
+
+Note : il y a, ici aussi, des branches avec et sans sécurité pour ce dépôt.
 
 ##### Modification dans application.yml :
 
